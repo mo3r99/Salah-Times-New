@@ -38,6 +38,39 @@ function navClose() {
     open=false;
 }
 
+let dropdownOpen = false;
+
+function mosqueDropdown() {
+    if (dropdownOpen == true) {
+        mosqueDropdownHide();
+        dropdownOpen = false;
+    } else {
+        mosqueDropdownShow();
+        dropdownOpen = true;
+    }
+}
+
+function mosqueDropdownShow() {
+    const dropdownButton = document.querySelector('.dropdown-bar span');
+    const dropdown = document.querySelector('.mosques-dropdown-menu');
+    const dropdownBar = document.querySelector('.dropdown-bar');
+
+    gsap.set(dropdown, {opacity: 0});
+    
+    dropdown.style.display = "block";
+    gsap.to(dropdownBar, {borderBottomLeftRadius: 0, borderBottomRightRadius: 0, duration: 0.3});
+    gsap.to(dropdown, {opacity: 1, duration: 0.3});
+}
+
+function mosqueDropdownHide() {
+    const dropdownButton = document.querySelector('.dropdown-bar span');
+    const dropdownMenu = document.querySelector('.mosques-dropdown-menu');
+    const dropdownBar = document.querySelector('.dropdown-bar');
+    dropdownMenu.style.display = 'none';
+    gsap.to(dropdownBar, {borderBottomLeftRadius: '20px', borderBottomRightRadius: '20px', duration: 0.3});
+ 
+}
+
 function makeAlert(alertmessage) {
     gsap.set('.alertContainer', {opacity:0, y: -100});
     document.querySelector('.alertContainer').style.display = "block";
@@ -50,6 +83,11 @@ function hideAlert() {
     setTimeout(() => {
         document.querySelector('.alertContainer').style.display = "none";
     }, 500);
+}
+
+function changeDropdownBarText(x) {
+    console.log(this);
+    document.querySelector('.mosque-name-on-bar').innerHTML = x.innerHTML;
 }
 
 function loadShow() {

@@ -95,14 +95,14 @@
             <h4 class="jamat-times-title">Jamat Times:</h4>
             <div class="mosque-select-container">
                 <div class="dropdown-container">
-                    <div class="dropdown-bar">
+                    <div class="dropdown-bar" onclick="mosqueDropdown()">
                         <p class="mosque-name-on-bar">Select Mosque:</p>
-                        <span class="material-icons">play_arrow</span>
+                        <span class="material-icons" onclick="mosqueDropdown()">play_arrow</span>
                     </div>
                     <div class="mosques-dropdown-menu">
-                        <p>Jamiah Mosque</p>
-                        <p>Masjide Noor</p>
-                        <p>Masjid e Hidayah</p>
+                        <a onclick="mosqueDropdown(), changeDropdownBarText(this)">Jamiah Mosque</a>
+                        <a onclick="mosqueDropdown(), changeDropdownBarText(this)">Masjide Noor</a>
+                        <a class="last-dropdown" onclick="mosqueDropdown(), changeDropdownBarText(this)">Masjid e Hidayah</a>
                     </div>
                 </div>
             </div>

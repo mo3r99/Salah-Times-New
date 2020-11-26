@@ -5,50 +5,6 @@ gsap.from('#mp', {duration: 0.5, opacity: 0, delay: 0.5});
 gsap.from('#learnbtn', {duration: 1, opacity: 0, delay: 1, ease: 'power1.out'});
 
 
-let tl = gsap.timeline({
-    scrollTrigger : {
-        trigger: '#learnsection',
-        pin: true,
-        start: "top top",
-        end: "+=2000",
-        scrub: 1
-    }
-});
-
-tl.from('.learn1h2', {
-    opacity: 0,
-    x: -500
-})
-.from('.learn1p', {
-    opacity: 0,
-    x: -500
-})
-.to('.learn1h2', {
-    opacity: 0,
-    x: 500
-})
-.to('.learn1p', {
-    opacity: 0,
-    x: 500
-})
-.from('.learn2h2', {
-    opacity: 0,
-    x: -500
-})
-.from('.learn2p', {
-    opacity: 0,
-    x: -500
-})
-.to('.learn2h2', {
-    opacity: 0,
-    x: 500
-})
-.to('.learn2p', {
-    opacity: 0,
-    x: 500
-});
-
-
 var learnbtn = document.querySelector('#learnbtn');
 
 function parallaxIt(e, target, movement = 1) {
