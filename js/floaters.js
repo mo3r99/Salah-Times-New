@@ -67,9 +67,9 @@ function animate() {
 init();
 animate();
 
-/*window.addEventListener("resize", () => {
+window.addEventListener("resize", () => {
     canvas.width = innerWidth;
     canvas.height = innerHeight;
 
     init();
-})*/
+})

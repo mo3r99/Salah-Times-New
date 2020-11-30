@@ -27,7 +27,7 @@ function callParallax(e){
 
 
 learnbtn.addEventListener('mousemove', function(e){
-  callParallax(e);
+  if (window.innerWidth > 700) {callParallax(e);}
 });
 
 learnbtn.addEventListener('mouseleave', function(e){
@@ -38,4 +38,74 @@ learnbtn.addEventListener('mouseleave', function(e){
     ease: "elastic",
     duration: 1
   });
+});
+
+const jamatContainer = document.querySelector('.jamat-times-container');
+const title = document.querySelector('.jamat-times-title');
+const dropdown = document.querySelector('.mosque-select-container');
+const times1 = document.querySelector('.mosque-1');
+const times2 = document.querySelector('.mosque-2');
+const times3 = document.querySelector('.mosque-3');
+const times4 = document.querySelector('.mosque-4');
+const mosque1title = document.querySelector('#mosque-1-title');
+const mosque2title = document.querySelector('#mosque-2-title');
+const mosque3title = document.querySelector('#mosque-3-title');
+const mosque4title = document.querySelector('#mosque-4-title');
+
+
+jamatContainer.addEventListener("mousemove", e => {
+  if (window.innerWidth > 700) {
+    let xAxis = ((window.innerWidth / 2) - e.pageX) / 200;
+    let yAxis = ((window.innerHeight / 2) - e.pageY  + 100) / 200;
+    jamatContainer.style.transform = `rotateX(${yAxis}deg) rotateY(${xAxis}deg)`;
+
+    title.style.transition = "all 1s ease";
+    dropdown.style.transition = "all 1s ease";
+    times1.style.transition = "all 0.3s ease";
+    times2.style.transition = "all 0.3s ease";
+    times3.style.transition = "all 0.3s ease";
+    times4.style.transition = "all 0.3s ease";
+    mosque1title.style.transition = "all 0.3s ease";
+    mosque2title.style.transition = "all 0.3s ease";
+    mosque3title.style.transition = "all 0.3s ease";
+    mosque4title.style.transition = "all 0.3s ease";
+
+    title.style.transform = 'translateZ(200px)';
+    title.style.fontSize = '1.3em';
+    dropdown.style.transform = 'translateZ(150px)';
+    //dropdown.style.boxShadow = `15px 15px 25px rgba(0,0,0,0.3)`;
+    times1.style.transform = 'translateZ(120px)';
+    times2.style.transform = 'translateZ(120px)';
+    times3.style.transform = 'translateZ(120px)';
+    times4.style.transform = 'translateZ(120px)';
+    mosque1title.style.transform = 'translateZ(140px)';
+    mosque2title.style.transform = 'translateZ(140px)';
+    mosque3title.style.transform = 'translateZ(140px)';
+    mosque4title.style.transform = 'translateZ(140px)';
+  }
+});
+
+jamatContainer.addEventListener("mouseenter", e => {
+  jamatContainer.style.transition = "all 0.1s ease";
+});
+
+jamatContainer.addEventListener("mouseleave", e => {
+  if (window.innerWidth > 700) {
+    jamatContainer.style.transition = "all 1s ease";
+    jamatContainer.style.transform = "rotateX(0deg) rotateY(0deg)"
+    title.style.transform = 'translateZ(0px)';
+    title.style.fontSize = '1.1em';
+    dropdown.style.transform = 'translateZ(0px)';
+    dropdown.style.boxShadow = 'none';
+    times1.style.transform = 'translateZ(0px)';
+    times2.style.transform = 'translateZ(0px)';
+    times3.style.transform = 'translateZ(0px)';
+    times4.style.transform = 'translateZ(0px)';
+    mosque1title.style.transform = 'translateZ(0px)';
+    mosque2title.style.transform = 'translateZ(0px)';
+    mosque3title.style.transform = 'translateZ(0px)';
+    mosque4title.style.transform = 'translateZ(0px)';
+  } else {
+    dropdown.style.transform = 'translateZ(100px)';
+  }
 });
