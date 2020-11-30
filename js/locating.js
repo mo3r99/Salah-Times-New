@@ -175,14 +175,16 @@ function postCodeLocate(postcode) {
         console.log(PCResponse);
         
         if (PCResponse.status == 200){
-            document.querySelector('.location p').innerHTML = PCResponse.result.admin_district;
+            Cookies.set("city", PCResponse.result.admin_district, {expires: 9999, samesite: 'lax'});
             console.log(PCResponse.result);
             loadHide();
             document.querySelector('section').style.display="block";
             document.querySelector('.main').style.display="none";
             Cookies.set("longitude",PCResponse.result.latitude,{expires: 9999, samesite: 'lax'});
             Cookies.set("latitude",PCResponse.result.longitude,{expires: 9999, samesite: 'lax'});
+            loadJamatTimes(Cookies.get("city"));
             document.querySelector('main').style.height="auto";
+            document.querySelector('.location p').innerHTML = PCResponse.result.admin_district;
         } else if (PCResponse.status === 404) {
             loadHide();
             setTimeout(() => {
@@ -202,19 +204,21 @@ function postCodeLocate(postcode) {
 
 if (document.cookie) {
     loadShow();
-    var locationAlready = document.cookie;
-    let cookieLongitude = parseFloat(locationAlready[10] + locationAlready[11] + locationAlready[12] + locationAlready[13] + locationAlready[14] + locationAlready[15] + locationAlready[16] + locationAlready[17] + locationAlready[18] + locationAlready[19]);
-    let cookieLatitude = parseFloat(locationAlready[31] + locationAlready[32] + locationAlready[33] + locationAlready[34] + locationAlready[35] + locationAlready[36] + locationAlready[37] + locationAlready[38] + locationAlready[39] + locationAlready[40]);
-    getCity(cookieLatitude, cookieLongitude);
+
+    console.log(Cookies.get("latitude"), Cookies.get("longitude"));
 
     document.querySelector('section').style.display="block";
-    getBeginningTimes();        
-    loadHide();
     document.querySelector('.location').scrollIntoView();
     document.querySelector('.main').style.display="none";
     document.querySelector('main').style.height="auto";
-    getCity(cookieLatitude, cookieLongitude);
+
+    getCity(Cookies.get("latitude"), Cookies.get("longitude"));
+
+    getBeginningTimes(); 
     loadJamatTimes(Cookies.get("city"));
+
+    loadHide();
+    
 } else {
     document.querySelector('section').style.display="none";
     document.querySelector('.main').style.display="block";
